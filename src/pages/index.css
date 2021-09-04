@@ -48,7 +48,7 @@ body {
   }
   
 .reactflow {
-    height: 75vh;
+    height: 75vh !important;
 }
 
   .react-flow__node a {
