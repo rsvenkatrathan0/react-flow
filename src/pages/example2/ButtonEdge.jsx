@@ -9,9 +9,8 @@ import '../index.css';
 
 const foreignObjectSize = 40;
 
-const onEdgeClick = (evt, id) => {
+const onEdgeClick = (evt) => {
   evt.stopPropagation();
-  alert(`remove ${id}`);
 };
 
 export default function CustomEdge({
@@ -23,7 +22,6 @@ export default function CustomEdge({
   sourcePosition,
   targetPosition,
   style = {},
-  data,
   arrowHeadType,
   markerEndId,
 }) {

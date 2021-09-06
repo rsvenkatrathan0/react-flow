@@ -4,7 +4,6 @@ import ReactFlow, {
   ReactFlowProvider,
   removeElements,
   addEdge,
-  useZoomPanHelper,
   Controls,
 } from 'react-flow-renderer';
 import localforage from 'localforage';
@@ -51,7 +50,7 @@ const Example2 = () => {
     const restoreFlow = async () => {
       const flow = await localforage.getItem(flowKey);
       if (flow) {
-        const [x = 0, y = 0] = flow.position;
+        // const [x = 0, y = 0] = flow.position;
         setElements(flow.elements || []);
         // transform({ x, y, zoom: flow.zoom || 0 });
       } else {

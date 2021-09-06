@@ -32,7 +32,6 @@ function getrgb(key, value) {
 export default memo(({ data, isConnectable }) => {
   const color = hexToRgb(data.color)[data.colorType[0]];
   const background = getrgb(data.colorType[0], color);
-  console.log(background);
   return (
     <>
       <Handle

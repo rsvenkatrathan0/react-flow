@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactFlow, {
-  isEdge,
   removeElements,
   addEdge,
-  MiniMap,
   Controls,
 } from 'react-flow-renderer';
 import ColorSelectorNode from './ColorSelectorNode';
@@ -16,7 +14,6 @@ const onElementClick = (event, element) => console.log('click', element);
 const initBgColor = '#1A192B';
 
 const connectionLineStyle = { stroke: '#fff' };
-const snapGrid = [20, 20];
 const nodeTypes = {
   selectorNode: ColorSelectorNode,
   colorOutputNode: ColorOptput,
@@ -124,7 +121,6 @@ const CustomNodeFlow = () => {
     (rfi) => {
       if (!reactflowInstance) {
         setReactflowInstance(rfi);
-        console.log('flow loaded:', rfi);
       }
     },
     [reactflowInstance],
@@ -144,17 +140,6 @@ const CustomNodeFlow = () => {
       defaultZoom={0.5}
       className="reactflow"
     >
-      {/* <MiniMap
-        nodeStrokeColor={(n) => {
-          if (n.type === 'input') return '#0041d0';
-          if (n.type === 'selectorNode') return bgColor;
-          if (n.type === 'colorOutputNode') return '#ff0072';
-        }}
-        nodeColor={(n) => {
-          if (n.type === 'selectorNode') return bgColor;
-          return '#fff';
-        }}
-      /> */}
       <Controls />
     </ReactFlow>
   );
