@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ReactFlow, {
   ReactFlowProvider,
   removeElements,
@@ -72,6 +72,17 @@ const Example2 = () => {
     };
     setElements((els) => els.concat(newNode));
   }, [setElements]);
+
+  const setDefaultIfInLocalStorage = async () => {
+    const flow = await localforage.getItem(flowKey);
+    if (flow) {
+      setElements(flow.elements || []);
+    }
+  };
+
+  useEffect(() => {
+    setDefaultIfInLocalStorage();
+  }, [setDefaultIfInLocalStorage]);
 
   return (
     <ReactFlowProvider>
