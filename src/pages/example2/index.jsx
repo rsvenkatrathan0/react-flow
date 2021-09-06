@@ -71,7 +71,6 @@ const Example2 = () => {
         y: 100,
       },
     };
-    console.log('newNode', newNode);
     setElements((els) => els.concat(newNode));
   }, [setElements]);
 
