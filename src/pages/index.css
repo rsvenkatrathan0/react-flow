@@ -49,6 +49,14 @@ body {
   
 .reactflow {
     height: 75vh !important;
+    width: 90vw !important;
+    background: white;
+    border: 1px solid grey;
+}
+
+button {
+  padding: 8px;
+  margin: 8px;
 }
 
   .react-flow__node a {

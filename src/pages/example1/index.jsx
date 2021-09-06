@@ -10,8 +10,6 @@ import ColorSelectorNode from './ColorSelectorNode';
 import '../index.css';
 import ColorOptput from './ColorOptput';
 
-
-
 const onNodeDragStop = (event, node) => console.log('drag stop', node);
 const onElementClick = (event, element) => console.log('click', element);
 
@@ -31,48 +29,44 @@ const CustomNodeFlow = () => {
 
   useEffect(() => {
     const onChange = (event) => {
-      setElements((els) =>
-        els.map((e) => {
-          return {
-            ...e,
-            data: {
-              ...e.data,
-              color,
-            },
-          };
-        })
-      );
       const color = event.target.value;
+      setElements((els) => els.map((e) => ({
+        ...e,
+        data: {
+          ...e.data,
+          color,
+        },
+      })));
       setBgColor(color);
     };
 
     setElements([
-      
+
       {
         id: '2',
         type: 'selectorNode',
-        data: { onChange: onChange, color: initBgColor },
+        data: { onChange, color: initBgColor },
         style: { border: '1px solid #777', padding: 10 },
         position: { x: 10, y: 50 },
       },
       {
         id: '3',
         type: 'colorOutputNode',
-        data: { color: initBgColor, colorType: 'red'},
+        data: { color: initBgColor, colorType: 'red' },
         position: { x: 350, y: 0 },
         targetPosition: 'left',
       },
       {
         id: '4',
         type: 'colorOutputNode',
-        data: { color: initBgColor, colorType: 'green'},
+        data: { color: initBgColor, colorType: 'green' },
         position: { x: 350, y: 75 },
         targetPosition: 'left',
       },
       {
         id: '5',
         type: 'colorOutputNode',
-        data: { color: initBgColor, colorType: 'blue'},
+        data: { color: initBgColor, colorType: 'blue' },
         position: { x: 350, y: 150 },
         targetPosition: 'left',
       },
@@ -118,16 +112,12 @@ const CustomNodeFlow = () => {
   }, [reactflowInstance, elements.length]);
 
   const onElementsRemove = useCallback(
-    (elementsToRemove) =>
-      setElements((els) => removeElements(elementsToRemove, els)),
-    []
+    (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els)),
+    [],
   );
   const onConnect = useCallback(
-    (params) =>
-      setElements((els) =>
-        addEdge({ ...params, animated: true, style: { stroke: '#fff' } }, els)
-      ),
-    []
+    (params) => setElements((els) => addEdge({ ...params, animated: true, style: { stroke: '#fff' } }, els)),
+    [],
   );
 
   const onLoad = useCallback(
@@ -137,7 +127,7 @@ const CustomNodeFlow = () => {
         console.log('flow loaded:', rfi);
       }
     },
-    [reactflowInstance]
+    [reactflowInstance],
   );
 
   return (
@@ -151,10 +141,10 @@ const CustomNodeFlow = () => {
       onLoad={onLoad}
       nodeTypes={nodeTypes}
       connectionLineStyle={connectionLineStyle}
-      defaultZoom={1}
+      defaultZoom={0.5}
       className="reactflow"
     >
-      <MiniMap
+      {/* <MiniMap
         nodeStrokeColor={(n) => {
           if (n.type === 'input') return '#0041d0';
           if (n.type === 'selectorNode') return bgColor;
@@ -164,7 +154,7 @@ const CustomNodeFlow = () => {
           if (n.type === 'selectorNode') return bgColor;
           return '#fff';
         }}
-      />
+      /> */}
       <Controls />
     </ReactFlow>
   );
