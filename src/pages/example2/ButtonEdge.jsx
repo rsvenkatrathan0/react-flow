@@ -9,10 +9,6 @@ import '../index.css';
 
 const foreignObjectSize = 40;
 
-const onEdgeClick = (evt) => {
-  evt.stopPropagation();
-};
-
 export default function CustomEdge({
   id,
   sourceX,
@@ -24,7 +20,12 @@ export default function CustomEdge({
   style = {},
   arrowHeadType,
   markerEndId,
+  remvoeEdge,
 }) {
+  const onEdgeClick = (evt) => {
+    remvoeEdge(id);
+    evt.stopPropagation();
+  };
   const edgePath = getBezierPath({
     sourceX,
     sourceY,

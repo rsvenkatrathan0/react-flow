@@ -25,17 +25,18 @@ const initialElements = [
   { id: 'e1-2', source: '1', target: '2' },
 ];
 
-const edgeTypes = {
-  buttonedge: ButtonEdge,
-};
-
 const Example2 = () => {
   const [rfInstance, setRfInstance] = useState(null);
   const [elements, setElements] = useState(initialElements);
   const onElementsRemove = (elementsToRemove) => {
     setElements((els) => removeElements(elementsToRemove, els));
   };
-  const onConnect = (params) => setElements((els) => addEdge({ ...params, type: 'buttonedge' }, els));
+  const onConnect = (params) => setElements((els) => addEdge(
+    { ...params, type: 'buttonedge' }, els,
+  ));
+  const remvoeEdge = (edgeId) => setElements((els) => els.filter((el) => el.id !== edgeId));
+
+  console.log('ellements', elements);
 
   //   const { transform } = useZoomPanHelper();
 
@@ -82,7 +83,11 @@ const Example2 = () => {
 
   useEffect(() => {
     setDefaultIfInLocalStorage();
-  }, [setDefaultIfInLocalStorage]);
+  }, []);
+
+  const edgeTypes = {
+    buttonedge: (edgeProps) => <ButtonEdge {...edgeProps} remvoeEdge={remvoeEdge} />,
+  };
 
   return (
     <ReactFlowProvider>

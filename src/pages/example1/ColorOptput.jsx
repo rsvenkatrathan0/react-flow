@@ -29,11 +29,12 @@ function getrgb(key, value) {
   return result;
 }
 
-export default memo(({ data, isConnectable }) => {
+export default memo(({ data, isConnectable, renderAsNode = true }) => {
   const color = hexToRgb(data.color)[data.colorType[0]];
   const background = getrgb(data.colorType[0], color);
   return (
     <>
+      {renderAsNode && (
       <Handle
         type="source"
         position="left"
@@ -41,22 +42,31 @@ export default memo(({ data, isConnectable }) => {
         style={{ top: '50%', background: '#555' }}
         isConnectable={isConnectable}
       />
-      <div style={{
-        border: '1px solid #777', padding: 10, background: '#fff', color: '#000',
-      }}
+      )}
+      <div
+        style={{
+          border: '1px solid #777',
+          padding: 10,
+          background: '#fff',
+          color: '#000',
+          textTransform: 'capitalize',
+        }}
       >
         {data.colorType}
         {' '}
         Amount:
         {' '}
         {color}
-        <div style={{
-          background, width: '20px', height: '10px', content: ' ', border: '1px solid black',
-        }}
+        <div
+          style={{
+            background,
+            width: '20px',
+            height: '10px',
+            content: ' ',
+            border: '1px solid black',
+          }}
         />
       </div>
-
     </>
-
   );
 });
