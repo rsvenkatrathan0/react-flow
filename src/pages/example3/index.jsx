@@ -55,6 +55,8 @@ const Example2 = () => {
   const saveState = () => {
     localforage.setItem('createUserElements', elements);
     console.log('storing elements', elements);
+    // eslint-disable-next-line no-alert
+    alert('saved flowchart info');
   };
 
   useEffect(() => {
