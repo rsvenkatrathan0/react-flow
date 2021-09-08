@@ -19,6 +19,7 @@ button {
   text-transform: capitalize;
   width: 200px;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .parametersBtn {
