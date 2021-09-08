@@ -132,13 +132,16 @@ export default memo(({ data = {}, isConnectable, setUserDetailsInElements }) => 
         {' '}
         Create User:
         {' '}
-        <div className="parametersBtn">
+        <div
+          className="parametersBtn"
+          role="presentation"
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowParameters((prev) => !prev);
+          }}
+        >
           <button
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowParameters((prev) => !prev);
-            }}
           >
             +
           </button>
