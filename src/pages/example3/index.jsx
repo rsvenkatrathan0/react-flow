@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactFlow, {
   ReactFlowProvider,
   removeElements,
@@ -29,7 +29,6 @@ const initialElements = [
 ];
 
 const Example2 = () => {
-  const [rfInstance, setRfInstance] = useState(null);
   const [elements, setElements] = useState(initialElements);
   const onElementsRemove = (elementsToRemove) => {
     setElements((els) => removeElements(elementsToRemove, els));
@@ -84,7 +83,6 @@ const Example2 = () => {
         onElementsRemove={onElementsRemove}
         nodeTypes={nodeTypes}
         onConnect={onConnect}
-        onLoad={setRfInstance}
         className="reactflow"
       >
         <Controls />
