@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import Home from './pages/home';
 import Example1 from './pages/example1';
 import Example2 from './pages/example2';
+import Example3 from './pages/example3';
 import store from './store';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/ex-1" component={Example1} />
             <Route exact path="/ex-2" component={Example2} />
+            <Route exact path="/ex-3" component={Example3} />
           </Switch>
         </Provider>
       </Router>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const examples = [
   { key: 1, path: 'ex-1' },
   { key: 2, path: 'ex-2' },
+  { key: 3, path: 'ex-3' },
 ];
 
 const Home = () => (
